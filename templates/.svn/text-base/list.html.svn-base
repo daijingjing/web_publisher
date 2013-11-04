@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-/WAPFORUM/DTD XHTML Mobile 1.0/EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>山西手机视讯</title>
+    <meta name="viewport" content="width=device-width;initial-scale=1.0;minimum-scale=1.0;maximum-scale=1.0" />
+    <meta name="MobileOptimized" content="" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/list.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/default.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="apps_header">
+        <div class="apps_fl apps_homea">
+            <a href="http://wap.uwxsx.com/wxcs/taiyuan/wxcs.3.jsp?redirected=true&areaPinyin=taiyuan"></a>
+        </div>
+    </div>
+
+    <div class="min_main_nav">
+        <a href="/">全部</a>
+        <a href="<%=service.urlChannel("资讯")%>">资讯</a>
+        <a href="<%=service.urlChannel("综艺")%>">综艺</a>
+        <a href="<%=service.urlChannel("体育")%>">体育</a>
+        <a href="<%=service.urlChannel("娱乐")%>">娱乐</a>
+        <a href="<%=service.urlChannel("影视")%>">影视</a>
+        <a href="http://wap.dm.10086.cn/X/a?isIndex=false">动漫</a>
+    </div>
+
+    <div class="tip_nav">
+        <a class="tlogo" href="/message.html"></a>
+        <a class="closetip"><img src="/images/tipclose.png"/></a>
+    </div>
+
+    <div style="display: none;">
+
+    </div>
+    
+    <% if(task.channel == '资讯') { %>
+    <div class="sx_more sx_more_1"></div>
+    <% } else if(task.channel == '综艺') { %>
+    <div class="sx_more sx_more_2"></div>
+    <% } else if(task.channel == '体育') { %>
+    <div class="sx_more sx_more_3"></div>
+    <% } else if(task.channel == '娱乐') { %>
+    <div class="sx_more sx_more_4"></div>
+    <% } else if(task.channel == '影视') { %>
+    <div class="sx_more sx_more_5"></div>
+    <% } %>
+    
+    <div id="bread_crumb" class="line">
+        您的位置：<a href="/">首页</a> &gt; <%=task.channel%> &gt; 第 <%=task.page+1%> 页
+    </div>
+    
+    <div class="R_boxer">
+        <div class="boxer_con tjpp">
+            <% service.db.findVideosByChannel(task.channel, [offset:task.page*10,max:10]).each{ video -> %>
+            <dl>
+                <dt>
+                    <a href="<%=service.urlVideo(video.uuid)%>"><img src="/video_thumb/<%=video.published.format("yyyyMMdd")%>/<%=video.vid%>.jpg"></a>
+                </dt>
+                <dd>
+                    <h3><a href="<%=service.urlVideo(video.uuid)%>"><%=video.title%></a></h3>
+                    <p><%=video.desc%></p>
+                    <p>发布：<%=video.published?.format("yyyy/MM/dd") %></p>
+                </dd>
+            </dl>
+            <% } %>
+        </div>
+    </div>
+    
+    <div class="pageinfo">
+        <a class="beforepage" href="<%=service.urlChannel(task.channel, (task.page > 0 ? task.page : service.pagesChannel(task.channel)) - 1)%>"></a>
+        <span><%=task.page+1%> / <%=service.pagesChannel(task.channel)%></span>
+        <a class="nextpage" href="<%=service.urlChannel(task.channel, (task.page < service.pagesChannel(task.channel) - 1) ? task.page + 1 : 0)%>"></a>
+
+        <% if (task.page < service.pagesChannel(task.channel) - 1) { task.hasMore = true; } %>
+    </div>
+
+    <!--底部结束-->
+    <div class="wrapper">
+        <div id="footer">
+            <div id="foot_download">
+                <a class="download_logo" href="wtai://wp/mc;12580"><img src="http://wap.uwxsx.com/wxcs/upload/images/down_logo.png" /> </a>
+                <a class="download_link" href="http://wap.uwxsx.com/wxcs/downloadnew.jsp;jsessionid=B362519B62EEEA9001448CD881EC133C?redirected=true&areaPinyin=taiyuan">无线城市客户端下载</a>
+            </div>
+            <p>
+                <a href="http://wap.uwxsx.com/wxcs/taiyuan/tuijian.3.jsp;jsessionid=B362519B62EEEA9001448CD881EC133C?redirected=true&areaPinyin=taiyuan&type=1">推荐</a>|
+                <a href="http://wap.uwxsx.com/wxcs/taiyuan/yjfk.3.jsp;jsessionid=B362519B62EEEA9001448CD881EC133C?redirected=true&areaPinyin=taiyuan">留言</a>|
+                <a href="http://wap.uwxsx.com/wxcs/taiyuan/helpchannel.3.jsp;jsessionid=B362519B62EEEA9001448CD881EC133C?redirected=true&areaPinyin=taiyuan">帮助</a>|
+                <a href="http://wap.uwxsx.com/wxcs/bookflag.jsp;jsessionid=B362519B62EEEA9001448CD881EC133C?redirected=true&areaPinyin=taiyuan">存书签</a><br />
+                中国移动通信集团山西有限公司<br />
+                无线城市[晋ICP备11002219]
+            </p>
+        </div>
+    </div>
+
+    <div class="cnzz_stat">
+    <script src="http://s13.cnzz.com/stat.php?id=4844881&web_id=4844881" language="JavaScript"></script>
+    <img src="/log/<%=URLDecoder.decode(task.channel+'第'+(task.page+1)+'页')%>" />
+    </div>
+</body>
+</html>

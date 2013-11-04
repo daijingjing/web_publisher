@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-/WAPFORUM/DTD XHTML Mobile 1.0/EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%=task.data.title%></title>
+    <meta name="viewport" content="width=device-width;initial-scale=1.0;minimum-scale=1.0;maximum-scale=1.0" />
+    <meta name="MobileOptimized" content="" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/content.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/default.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="apps_header">
+        <div class="apps_fl apps_homea">
+            <a href="http://wap.uwxsx.com/wxcs/taiyuan/wxcs.3.jsp?redirected=true&areaPinyin=taiyuan"></a>
+        </div>
+    </div>
+
+    <div class="min_main_nav">
+        <a href="/">全部</a>
+        <a href="<%=service.urlChannel("资讯")%>">资讯</a>
+        <a href="<%=service.urlChannel("综艺")%>">综艺</a>
+        <a href="<%=service.urlChannel("体育")%>">体育</a>
+        <a href="<%=service.urlChannel("娱乐")%>">娱乐</a>
+        <a href="<%=service.urlChannel("影视")%>">影视</a>
+        <a href="http://wap.dm.10086.cn/X/a?isIndex=false">动漫</a>
+    </div>
+
+    <div class="tip_nav">
+        <a class="tlogo" href="/message.html"></a>
+        <a class="closetip"><img src="/images/tipclose.png"/></a>
+    </div>
+
+    <div style="display: none;">
+
+    </div>   
+
+    <% if(task.channel == '资讯') { %>
+    <div class="sx_more sx_more_1"></div>
+    <% } else if(task.channel == '综艺') { %>
+    <div class="sx_more sx_more_2"></div>
+    <% } else if(task.channel == '体育') { %>
+    <div class="sx_more sx_more_3"></div>
+    <% } else if(task.channel == '娱乐') { %>
+    <div class="sx_more sx_more_4"></div>
+    <% } else if(task.channel == '影视') { %>
+    <div class="sx_more sx_more_5"></div>
+    <% } %>
+
+    <div id="bread_crumb" class="line">
+        您的位置：<a href="/">首页</a> &gt; <a href="<%=service.urlChannel(task.channel)%>"><%=task.channel%></a>
+    </div>
+    
+
+    
+    <div class="R_boxer">
+        <div class="titleStyle">
+            <h3><%=task.data.title%></h3>
+        </div>
+    </div>
+
+    <div class="sx_pic">
+        <a href="/video/<%=task.data.published.format("yyyyMMdd")%>/<%=task.data.vid%>_13_jm.3gp">
+            <img src="/video_thumb/<%=task.data.published.format("yyyyMMdd")%>/<%=task.data.vid%>_play.jpg" />
+        </a>
+    </div>
+    <div class="comment_desc"><%=task.data.desc%></div>
+
+
+    <dl class="sx_btn">
+        <dt><a href="/video/<%=task.data.published.format("yyyyMMdd")%>/<%=task.data.vid%>_11_jk.3gp"><img src="/images/play1.png" /></a></dt>
+        <dt><a href="/video/<%=task.data.published.format("yyyyMMdd")%>/<%=task.data.vid%>_13_jm.3gp"><img src="/images/play2.png" /></a></dt>
+        <dd><a href="/video/<%=task.data.published.format("yyyyMMdd")%>/<%=task.data.vid%>_13_jm.3gp?download=1"><img src="/images/play3.png" /></a></dd>
+        <dd><a href="/help.html"><img src="/images/play4.png" /></a></dd>
+    </dl>
+    <div class="comment">
+        <h3 align="left">
+            <p>【无线城市温馨提示】</p>
+            <p>在线观看视频时，建议使用手机自带播放器。</p>
+        </h3>
+    </div>
+    <div class="content_nav">
+		<%if(task.next) {%>
+		<div class="next">
+			<a href="<%=service.urlVideo(task.next.uuid)%>" title="<%=task.next.title%>">
+				<div class="tippage">上一个</div>
+				<div><img src="/video_thumb/<%=task.next.published.format("yyyyMMdd")%>/<%=task.next.vid%>.jpg"></div>
+				<div class="text_title"><%=task.next.title%></div>
+			</a>
+		</div>
+		<%}%>
+        <%if(task.prev) {%>
+		<div class="prev">
+			<a href="<%=service.urlVideo(task.prev.uuid)%>" title="<%=task.prev.title%>">
+				<div class="tippage">下一个</div>
+				<div><img src="/video_thumb/<%=task.prev.published.format("yyyyMMdd")%>/<%=task.prev.vid%>.jpg"></div>
+				<div class="text_title"><%=task.prev.title%></div>
+			</a>
+		</div>
+		<%}%>
+    </div>
+    <div class="jiathis_div">
+        <p class="jiathis_text">分享到：</p>
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style_32x32">
+            <a class="jiathis_button_qzone"></a>
+            <a class="jiathis_button_tsina"></a>
+            <a class="jiathis_button_tqq"></a>
+            <a class="jiathis_button_renren"></a>
+            <a class="jiathis_button_feixin"></a>
+            <a class="jiathis_button_kaixin001"></a>
+        </div>
+    </div>
+	<br/>
+
+    <div class="sx_more sx_more_tuijian">
+        <span class="more"><a
+            href="<%=service.urlChannel(task.channel)%>">更多</a>
+        </span>
+    </div>
+    
+    <div class="R_boxer relations">
+        <div class="boxer_con tjpp">
+            <% service.db.findVideosByChannel(task.channel, [max:5]).each{ video -> %>
+            <dl>
+                <dt>
+                    <a href="<%=service.urlVideo(video.uuid)%>"><img src="/video_thumb/<%=video.published.format("yyyyMMdd")%>/<%=video.vid%>.jpg"></a>
+                </dt>
+                <dd>
+                    <h3><a href="<%=service.urlVideo(video.uuid)%>"><%=video.title%></a></h3>
+                </dd>
+            </dl>
+            <% } %>
+        </div>
+    </div>
+    <div class="dw_wxcs">
+        <img src="/images/down_logo.png">
+        <a href="http://wap.uwxsx.com/wxcs/downloadnew.jsp?redirected=true&areaPinyin=taiyuan">
+            <font>下载无线城市收看更多视频内容</font>
+        </a>
+    </div>
+    <div class="dw_wxcs_img">
+        <center>
+            <img src="/images/down.png" />
+        </center>
+    </div>
+		
+    <script type="text/javascript">
+    var jiathis_config = { summary : "", hideMore : false}
+    </script>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+
+    <!--底部结束-->
+    <div class="wrapper">
+        <div id="footer">
+            <div id="foot_download">
+                <a class="download_logo" href="wtai://wp/mc;12580"><img src="http://wap.uwxsx.com/wxcs/upload/images/down_logo.png" /> </a>
+                <a class="download_link" href="http://wap.uwxsx.com/wxcs/downloadnew.jsp;jsessionid=B362519B62EEEA9001448CD881EC133C?redirected=true&areaPinyin=taiyuan">无线城市客户端下载</a>
+            </div>
+            <p>
+                <a href="http://wap.uwxsx.com/wxcs/taiyuan/tuijian.3.jsp;jsessionid=B362519B62EEEA9001448CD881EC133C?redirected=true&areaPinyin=taiyuan&type=1">推荐</a>|
+                <a href="http://wap.uwxsx.com/wxcs/taiyuan/yjfk.3.jsp;jsessionid=B362519B62EEEA9001448CD881EC133C?redirected=true&areaPinyin=taiyuan">留言</a>|
+                <a href="http://wap.uwxsx.com/wxcs/taiyuan/helpchannel.3.jsp;jsessionid=B362519B62EEEA9001448CD881EC133C?redirected=true&areaPinyin=taiyuan">帮助</a>|
+                <a href="http://wap.uwxsx.com/wxcs/bookflag.jsp;jsessionid=B362519B62EEEA9001448CD881EC133C?redirected=true&areaPinyin=taiyuan">存书签</a><br />
+                中国移动通信集团山西有限公司<br />
+                无线城市[晋ICP备11002219]
+            </p>
+        </div>
+    </div>
+
+    <div class="cnzz_stat">
+    <script src="http://s13.cnzz.com/stat.php?id=4844881&web_id=4844881" language="JavaScript"></script>
+    <img src="/log/<%=task.data.uuid%>/<%=URLDecoder.decode(task.channel)%>/<%=URLDecoder.decode(task.data.title)%>" />
+    </div>
+    
+</body>
+</html>
