@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-/WAPFORUM/DTD XHTML Mobile 1.0/EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title><%=task.data.title%> - 集团</title>
+		<meta name="viewport"
+			content="width=device-width;initial-scale=1.0;minimum-scale=1.0;maximum-scale=1.0" />
+		<meta name="MobileOptimized" content="" />
+		<link href="/css/apps_3g.css" rel="stylesheet" type="text/css" />
+		<script src="/js/jquery.min.js" type="text/javascript">
+</script>
+		<script src="/js/default.js" type="text/javascript">
+</script>
+	</head>
+	<body>
+		<div id="header"><div style="text-align:center"><img src="/images/022.gif"/></div></div>
+		<div class=" portlet-content-container" style="">
+			<div class="portlet-body">
+				<div class="remoteHtml">
+					<div class="navbar">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<a style="display: inline-block; line-height: 14px;" href="/">全部</a>
+									</td>
+									<td>
+										<img src="/images/apps/navline.jpg">
+									</td>
+									<td>
+										<a style="display: inline-block; line-height: 14px;" href="<%=service.urlChannel("资讯")%>">资讯</a>
+									</td>
+									<td>
+										<img src="/images/apps/navline.jpg">
+									</td>
+									<td>
+										<a style="display: inline-block; line-height: 14px;" href="<%=service.urlChannel("综艺")%>">综艺</a>
+									</td>
+									<td>
+										<img src="/images/apps/navline.jpg">
+									</td>
+									<td>
+										<a style="display: inline-block; line-height: 14px;" href="<%=service.urlChannel("体育")%>">体育</a>
+									</td>
+									<td>
+										<img src="/images/apps/navline.jpg">
+									</td>
+									<td>
+										<a style="display: inline-block; line-height: 14px;" href="<%=service.urlChannel("影视")%>">影视</a>
+									</td>
+									<td>
+										<img src="/images/apps/navline.jpg">
+									</td>
+									<td>
+										<a style="display: inline-block; line-height: 14px;" href="<%=service.urlChannel("娱乐")%>">娱乐</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="apps_container">
+			<p class="apps_fz16 apps_textc apps_newtit apps_cGray">
+				<%=task.data.title%>
+			</p>
+			<p class="apps_fz12 apps_textc apps_about
+				apps_cGray8">
+				<%=task.data.published.format("yyyyMMdd")%>
+			</p>
+			<p class="apps_textc apps_p_td10">
+				<a href="/video/<%=task.data.published.format("yyyyMMdd")%>/<%=task.data.vid%>_13_jm.3gp"><img
+						src="/video_thumb/<%=task.data.published.format("yyyyMMdd")%>/<%=task.data.vid%>_play.jpg"
+					width="200" alt="<%=task.data.title%>" /> </a>
+			</p>
+			<p class="apps_line24px apps_cGray5 apps_textc">
+				<%=task.data.desc%>
+			</p>
+		</div>
+
+
+		<div class="apps_container apps_searchformeasy">
+			<p class="apps_textc">
+				<a href="/video/<%=task.data.published.format("yyyyMMdd")%>/<%=task.data.vid%>_11_jk.3gp"
+					class="apps_btna1">流畅</a>
+				<a href="/video/<%=task.data.published.format("yyyyMMdd")%>/<%=task.data.vid%>_13_jm.3gp"
+					class="apps_btna1">高清</a>
+				<a href="/video/<%=task.data.published.format("yyyyMMdd")%>/<%=task.data.vid%>_13_jm.3gp?download=1"
+					class="apps_btna1">下载</a>
+				<a href="/help.html" class="apps_btna1">帮助</a>
+			</p>
+		</div>
+
+		<div class="apps_fz12 apps_cJacinth">
+			<p class="apps_textc">
+				【无线城市温馨提示】
+			</p>
+			<br />
+			<p class="apps_textc">
+				在线观看视频时，建议使用手机自带播放器。
+			</p>
+		</div>
+
+		<div class="apps_container apps_title">
+			<a href="<%=service.urlChannel(task.channel)%>">更多</a>精彩推荐
+		</div>
+
+		<div class="apps_container apps_dlines">
+		</div>
+
+		<div class="apps_container apps_imglist">
+			<% service.db.findRelationVideo(task.uuid,task.channel, 5).each{
+			video -> %>
+			<dl>
+				<dt>
+					<img src="/video_thumb/<%=video.published.format("yyyyMMdd")%>/<%=video.vid%>.jpg" />
+				</dt>
+				<dd>
+					<p class=" apps_fz16">
+						<strong><a href="<%=service.urlVideo(video.uuid)%>"><%=video.title%></a>
+						</strong>
+					</p>
+				</dd>
+			</dl>
+			<% } %>
+		</div>
+
+		<!--底部结束-->
+		<div id="footer"><div style="text-align:center"><img src="/images/022.gif"/></div></div>
+	</body>
+</html>

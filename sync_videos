@@ -1,0 +1,72 @@
+#!/bin/bash
+
+source ~/.bash_profile
+cd /home/daijj/publisher
+
+date=`date '+%Y%m%d'`
+
+if [ -n "$1" ]; then
+  echo $1
+  date=$1
+fi
+
+if [ ! -e "/data/video/$date" ]; then
+  mkdir "/data/video/$date"
+fi
+
+if [ ! -e "/data/video/$date/$date.xls" ]; then
+  wget -o /dev/null -O "/data/video/$date/$date.xls" "http://183.203.16.173/sanjinydView/video/$date/$date.xls"
+fi
+
+groovy --encoding=UTF-8 importExcel.groovy --base-path /data/video/ -t $date
+
+echo "begin download video files "
+while read line; do
+
+  save="/data/video/$date/${line}_11_jk.3gp"
+  url="http://183.203.16.173/sanjinydView/video/$date/${line}_11_jk.3gp"
+  
+  if [ ! -e "$save" ]; then
+    wget -o /dev/null -O "$save" "$url"
+    printf "."
+    if [ $? -ne 0 ]; then
+        printf "\ndownload error: $url\n"
+        rm -f $save
+    fi
+  else
+    printf "$save exists!\n"
+  fi
+  
+  save2="/data/video/$date/${line}_13_jm.3gp"
+  url2="http://183.203.16.173/sanjinydView/video/$date/${line}_13_jm.3gp"
+
+  if [ ! -e "$save2" ]; then
+    wget -o /dev/null -O "$save2" "$url2"
+    printf "."
+    if [ $? -ne 0 ]; then
+        printf "\ndownload error: $url2\n"
+        rm -f $save2
+    fi
+  else
+    printf "$save2 exists!\n"
+  fi
+
+  save3="/data/video/$date/${line}.jpg"
+  url3="http://183.203.16.173/sanjinydView/video/$date/${line}.jpg"
+
+  if [ ! -e "$save3" ]; then
+    wget -o /dev/null -O "$save3" "$url3"
+    printf "."
+    if [ $? -ne 0 ]; then
+        printf "\ndownload error: $url3\n"
+        rm -f $save3
+    fi
+  else
+    printf "$save3 exists!\n"
+  fi
+
+done < "video_list.$date"
+
+printf "\n"
+
+rm -f "video_list.$date"

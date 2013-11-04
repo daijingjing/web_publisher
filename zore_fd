@@ -1,0 +1,14 @@
+#!/bin/bash
+
+zfiles=`find /wasu/video/ -type f -size 0c`
+all=""
+
+for line in $zfiles; do
+  prefix="${line%.*}"
+  prefix=${prefix/_11_jk/}
+  prefix=${prefix/_13_jm/}
+  vid=${prefix##*/}
+  echo $vid
+done
+
+

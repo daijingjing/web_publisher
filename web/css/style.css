@@ -1,0 +1,484 @@
+@charset "utf-8";
+/* html5doctor.com Reset v1.6.1 - http://cssreset.com */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}
+
+body {
+	width: 320px;
+	margin: 0 auto;
+	background: url(../images/bg.png) center repeat-y #fff;
+	color: #000;
+	font-size: 14px;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/**line-height: 1.5;**/
+	text-align: left;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+a {
+	color: #000;
+	text-decoration: none
+}
+
+.clear {
+	clear: both
+}
+
+.text_center {
+	text-align: center
+}
+
+.sx_pic {
+	width: 300px;
+	height: 200px;
+	overflow: hidden;
+	padding: 0 10px 10px
+}
+
+
+.sx_pic img {
+	width: 300px;
+	height: 200px;
+}
+
+.sx_btn {
+	width: 310px;
+	height: 28px;
+	overflow: hidden;
+	padding: 0 0 20px 10px
+}
+
+.sx_btn dt,dd {
+	float: left;
+	display: inline;
+	padding-right: 10px
+}
+
+.sx_btn dt {
+	width: 68px
+}
+
+.sx_btn dd {
+	width: 67px
+}
+
+
+.sx_more {
+	width: 320px;
+	height: 30px;
+	padding: 1px 0px;
+	overflow: hidden;
+	text-align: left;
+	font-weight: bold;
+}
+
+.R_boxer {
+	width: 300px;
+	margin-bottom: 10px;
+	margin: auto
+}
+
+.titleStyle {
+	color: #000000;
+	text-align: center;
+	width: 80%;
+	margin: auto;
+}
+
+.R_boxer h4 {
+	background: url(http://img.hexun.com/tv/2011new/img/sec_page_bg.gif)
+		no-repeat 0 -73px;
+	height: 35px;
+	line-height: 35px;
+	padding: 0 10px 0 16px;
+	font-size: 14px;
+}
+
+.R_boxer h4 a.more {
+	float: right;
+	width: 55px;
+	height: 20px;
+	background: url(http://img.hexun.com/tv/2011new/img/sec_page_bg.gif)
+		no-repeat -296px -82px;
+	margin-top: 7px;
+}
+
+.R_boxer h4 a.more:hover {
+	background-position: -358px -82px;
+}
+
+.R_boxer .boxer_con {
+	border-left: 1px;
+	border-right: 1px;
+}
+
+.R_boxer .tjpp { /*padding: 0px 0 0 7px;*/
+	width: 300px;
+	overflow: hidden;
+	margin: auto;
+}
+
+.R_boxer .tjpp dl {
+	float: left;
+	width: 300px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.R_boxer .tjpp dl dt {
+	float: left;
+	width: 104px;
+	height: 77px;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+
+.R_boxer .tjpp dl .saicheng {
+	float: left;
+	width: 77px;
+	height: 77px;
+	/*border: 1px solid #CCC;*/
+	padding: 1px;
+}
+
+.R_boxer .tjpp dl dd {
+	float: right;
+	width: 170px;
+	line-height: 20px;
+	padding-bottom: 5px;
+}
+
+.R_boxer .tjpp dl dd p {
+	color: #7A7A7A;
+	font-size: 12px;
+}
+
+.R_boxer .tjpp dl dd p a {
+	color: #990000;
+}
+
+.R_boxer h5 {
+	background: url(http://img.hexun.com/tv/2011new/img/sec_page_bg.gif)
+		no-repeat 0 -115px;
+	height: 8px;
+	overflow: hidden;
+}
+
+.sx_more .more {
+	vertical-align: middle;
+	width: 40px;
+	float: right;
+	margin: auto;
+	padding: 1px;
+	font-weight: bolder;
+}
+
+.sx_more .more a {
+	margin: auto;
+	text-align: center;
+	padding: 0px 0px 0 0;
+	float: right;
+	color: #3081bb;
+	line-height: 1.8
+}
+
+.sx_nav_div {
+	margin: 0 0 5px 0;
+	color: white;
+	font-weight: bolder;
+	line-height: 1.5
+}
+
+.sx_nav_div a {
+	color: white;
+}
+
+
+.tableStyle {
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 14px;
+	border: 1px solid #DAD9C5;
+	width: 300px;
+}
+
+.tableStyle td {
+	border: 1px solid #DAD9C5;
+	vertical-align: middle;
+}
+
+.tableStyle th {
+	border: 1px solid #DAD9C5;
+}
+
+.tableStyle tr {
+	text-align: -webkit-center;
+}
+
+/*金牌榜的样式*/
+.img_flag {
+	width: 22px;
+	height: 15px;
+	border: 1px solid gray;
+	vertical-align: middle;
+}
+
+.w02 {
+	text-align: left;
+	padding-left: 1px
+}
+
+.w01 {
+	text-align: center;
+}
+
+.w03 {
+	text-align: center;
+}
+
+.w04 {
+	text-align: center;
+}
+
+.w05 {
+	text-align: center;
+}
+
+.w06 {
+	text-align: center;
+}
+
+.date {
+	font-size: 12px;
+}
+
+.title_center {
+	text-align: center;
+	color: #fff;
+	font-weight: bolder;
+}
+
+#bread_crumb.line {
+	border-bottom: 1px solid #E6E7E8;
+}
+
+#bread_crumb {
+	color: #888888;
+	font-size: 14px;
+	height: 45px;
+	line-height: 45px;
+	padding-left: 15px;
+}
+
+.line {
+	padding-top: 3px;
+}
+
+#foot_download {
+	background-color: #D3D4D5;
+	height: 38px;
+}
+
+#footer p,#footer p a {
+	background-color: #5B5C5D;
+	color: #FFFFFF;
+	font-size: 12px;
+	line-height: 18px;
+	padding: 5px 0;
+	text-align: center;
+}
+
+a.download_link {
+	background:
+		url("http://wap.uwxsx.com/wxcs/upload/images/download_foot_icon.png")
+		no-repeat scroll left bottom transparent;
+	color: #505050;
+	float: right;
+	font-size: 14px;
+	height: 24px;
+	line-height: 24px;
+	padding: 7px 10px 0 28px;
+}
+
+a.download_logo {
+	color: black;
+	text-decoration: none;
+	float: left;
+}
+
+.button {
+	background: url("../../images/bg-button-green.gif") repeat-x scroll left
+		top #459300 !important;
+	border: 1px solid #459300 !important;
+	color: #FFFFFF !important;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 11px !important;
+	padding: 4px 7px !important;
+}
+
+/**header*/
+#min_header {
+	background: url("../../images/min_top_logo_480.jpg") no-repeat scroll
+		left center transparent;
+	color: #FFFFFF;
+	font-size: 24px;
+	height: 55px;
+	position: relative;
+}
+
+#min_header a.go_home {
+	background: none repeat scroll 0 0 transparent;
+	height: 56px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 148px;
+}
+
+#min_header h1 {
+	font-size: 24px;
+	font-weight: normal;
+	left: 75px;
+	position: absolute;
+	top: 13px;
+	width: 100px;
+}
+
+.min_main_nav {
+	background: none repeat scroll 0 0 #C4F08F;
+	font-size: 16px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.min_main_nav a {
+	padding: 5px 3px;
+}
+
+.tip_nav {
+	background: none repeat scroll 0 0 #0f6700;
+	font-size: 16px;
+	line-height: 30px;
+	text-align: center;
+	bottom: 0;
+	height: 44px;
+	opacity: 0.8;
+    display:none;
+}
+
+.closetip {
+	background: url("../images/tipclose.png") no-repeat scroll 0 0
+		transparent;
+	float: right;
+	height: 21px;
+	margin-right: 7px;
+	margin-top: 12px;
+	width: 21px;
+}
+
+.tip_nav .tlogo {
+	float: left;
+	height: 35px;
+	margin-left: 8px;
+	margin-top: 8px;
+	width: 250px;
+	color: #fff;
+	background: url("../images/down1.png") no-repeat transparent;
+    line-height: 24px;
+    padding: 4px 10px 0 12px;
+    text-align:center;
+}
+
+.pageinfo {
+	margin: 5px auto;
+	text-align: center;
+	height: 30px;
+    line-height:30px;
+    vertical-align:middle;
+    padding-left:100px;
+}
+
+.pageinfo span{
+	height: 30px;
+    line-height:30px;
+    display:inline-block;
+    vertical-align:middle;
+    padding:0 8px;
+    margin:0;
+    float:left;
+    
+}
+
+.beforepage img,
+.nextpage img {
+	width: 1px;
+	height: 1px;
+    padding:0;
+    margin:0;
+    display:none;
+}
+
+.beforepage { /*background: none repeat scroll 0 0 #C21212;
+    border: 1px solid #000000;
+    border-radius: 9px 9px 9px 9px;*/
+	color: #FFFFFF;
+	width: 30px;
+	height: 30px;
+    display:inline-block;
+    overflow:hidden;
+    padding:0;
+    margin:0;
+    float:left;
+    background: url('../images/before.png') center center no-repeat;
+}
+
+.nextpage { /*background: none repeat scroll 0 0 #C21212;
+    border: 1px solid #000000;
+    border-radius: 9px 9px 9px 9px;*/
+	color: #FFFFFF;
+	width: 30px;
+	height: 30px;
+    display:block;
+    overflow:hidden;
+    float:left;
+    padding:0;
+    margin:0;
+    background: url('../images/next.png') center center no-repeat;
+}
+
+.apps_fl {
+	float: left;
+}
+
+.apps_header {
+	background: url("../images/head.png") no-repeat scroll 0 0
+		transparent;
+	height: 60px;
+	margin: 0 auto;
+	max-width: 320px;
+	min-width: 240px;
+	width: 100%;
+}
+
+
+.apps_homea a {
+    display: block;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 150px;
+}
+
+
+
+
+
+
+.R_boxer .boxer_con dl dt a img {width: 104px; height: 77px;}
+
+.cnzz_stat {display:none;}

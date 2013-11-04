@@ -1,0 +1,41 @@
+#!/bin/bash
+
+date='*'
+basepath=/wasu/video
+destpath=/wasu/website/v/video_thumb
+cover_img=/home/daijj/publisher/play_cover.png
+
+if [ ! -e $cover_img ]; then
+  echo "error: $cover_img file don't exist!"
+  exit 1
+fi
+
+if [ ! -e $destpath ]; then
+  echo "make dir $destpath"
+  mkdir $destpath
+fi
+
+if [ -n "$1" ]; then
+  echo $1
+  date=$1
+fi
+
+printf "begin convert images "
+for file in $basepath/$date/*.jpg ; do
+  p="${file%/*}"
+  d="${p##*/}"
+  f="${file##*/}"
+  f="${f%.*}"
+  dest="$destpath/$d"
+  if [ ! -e $dest ]; then
+    mkdir $dest
+  fi
+
+  if [ ! -e "$dest/$f.jpg" ] || [ "$2" = "fored" ]; then
+    printf "."
+    gm convert -quality 100 -unsharp "0.5x1.0+0.8+0.03" $file -resize 104x77 +profile "*" "$dest/$f.jpg"
+    gm convert -quality 100 -unsharp "0.5x1.0+0.8+0.03" $file -resize 300x225 +profile "*" "$dest/${f}_play.jpg"
+    gm composite -quality 100 $cover_img "$dest/${f}_play.jpg" "$dest/${f}_play.jpg"
+  fi
+done
+printf " done!\n"

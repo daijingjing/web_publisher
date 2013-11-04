@@ -1,0 +1,26 @@
+#!/bin/bash
+
+source ~/.bash_profile
+cd /home/daijj/publisher
+
+basepath=/wasu/video/
+date=`date '+%Y%m%d'`
+
+if [ -n "$1" ]; then
+  echo $1
+  date=$1
+fi
+
+if [ -e "$basepath/$date/$date.xls" ]; then
+  groovy --encoding=UTF-8 importExcel.groovy --base-path $basepath -t $date
+else
+  echo "excel file not exists!!!"
+fi
+
+./convert_image $date
+
+rm -f "video_list.$date"
+
+
+./publish
+

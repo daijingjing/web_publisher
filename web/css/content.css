@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+.R_boxer .titleStyle h3 {
+    font-size:1.2em;
+    line-height:2em;
+}
+.R_boxer .tjpp dl dt {
+    width:90px;
+    height:70px;
+}
+.R_boxer .tjpp dl dt a img {
+    width:90px;
+    height:70px;
+}
+
+
+.R_boxer .tjpp dl dd {
+    width:185px;
+}
+.relations dl dd h3 a{
+    display:block;
+    padding:0px;
+    width:185px;
+    height:70px;
+    line-height:70px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.comment {
+    margin: 10px 10px 0px 10px;
+    line-height:1.5em;
+}
+
+.content_nav {
+    margin-top:20px;
+    margin-bottom:20px;
+    height:1.2em;
+    line-height:1.2em;
+    overflow:hidden;
+    font-weight:bold;
+}
+
+.content_nav .next,
+.content_nav .prev {
+    height:1.2em;
+    display:block;
+}
+.content_nav a {
+    padding:0px 6px;
+}
+
+.content_nav .next {
+    float:right;
+    text-align:right;
+    width:115px;
+    overflow: hidden;
+    margin-right:10px;
+}
+
+.content_nav .prev {
+    float:left;
+    text-align:left;
+    width:115px;
+    overflow: hidden;
+    margin-left:10px;
+}
+
+.jiathis_text {
+    line-height:2em;
+    height:2em;
+}
+
+.dw_wxcs {
+    background-color: #c3c3c3; 
+    height: 38px;
+    overflow:hidden;
+}
