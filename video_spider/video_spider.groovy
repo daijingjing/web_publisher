@@ -19,6 +19,7 @@ class VideoSpider{
 
     String publish_dir = '/wasu/video';
     boolean fored_download = false;
+    boolean debug_mode = false;
     int http_waitfor_second = 10;
     long max_duration = 600;   // 10 minutes
 
@@ -235,7 +236,7 @@ class VideoSpider{
                 headers.'Referer'       = referer ? referer.toString() : url
 
                 response.success = { resp, reader ->
-                    def fos = new FileOutputStream(file)
+                    def fos = new FileOutputStream(file + '.tmp')
                     byte[] bytes = new byte[4096];
                     
                     for(;;) {
@@ -245,7 +246,9 @@ class VideoSpider{
                         length += size;
                     }
                     
+                    fos.flush();
                     fos.close();
+                    new File(file + '.tmp').renameTo(file);
                 }
             }
             
@@ -423,19 +426,24 @@ class VideoSpider{
                             def dirs = publish_dir + '/' + article.DATE.format('yyyyMMdd');
                             new File(dirs).mkdirs();
 
+                            int thumb_dw = -1;
+                            int video_dw = -1;
                             // download thumb
                             def thumb_ext = article.THUMB.lastIndexOf('.') > 0 ? article.THUMB[article.THUMB.lastIndexOf('.') .. -1] : ''
-                            http_download(article.URL, article.THUMB, dirs + '/' + article.ID + thumb_ext.toLowerCase())
+                            thumb_dw = http_download(article.URL, article.THUMB, dirs + '/' + article.ID + thumb_ext.toLowerCase())
                             article.THUMB_FILE = dirs + '/' + article.ID + thumb_ext.toLowerCase()
 
                             // download video
                             def video_ext = article.VIDEO.lastIndexOf('.') > 0 ? article.VIDEO[article.VIDEO.lastIndexOf('.') .. -1] : ''
-                            http_download(article.URL, article.VIDEO, dirs + '/' + article.ID + video_ext.toLowerCase());
+                            video_dw = http_download(article.URL, article.VIDEO, dirs + '/' + article.ID + video_ext.toLowerCase());
                             article.VIDEO_FILE = dirs + '/' + article.ID + video_ext.toLowerCase()
 
                             // store2db
-                            put_video(item.URL, article);
-                            count++
+                            if (video_dw >= 0 && thumb_dw >= 0 && !debug_mode) {
+                                put_video(item.URL, article);
+                                count++
+                            }
+                            
                         }
                     }
                 }
@@ -564,6 +572,7 @@ class VideoSpider{
         cli.b( longOpt: 'base-path', argName: 'publish', required: false, args: 1, '发布路径' )  
         cli.w( longOpt: 'wait-for', argName: 'wait-for', required: false, args: 1, 'HTTP连接等待间隔(秒)' )  
         cli.s( longOpt: 'max-duration', argName: 'max-duration', required: false, args: 1, '过滤视频最大时长(秒)' )  
+        cli.x( longOpt: 'debug', argName: 'debug', required: false, args: 0, '调试模式' )  
           
         def opt = cli.parse(args)  
         if (!opt) return;
@@ -585,8 +594,9 @@ class VideoSpider{
         if (opt.b) instance.publish_dir = opt.b;
         if (opt.w) instance.http_waitfor_second = opt.w.toInteger();
         if (opt.s) instance.max_duration = opt.s.toLong();
-
-        println "[${new Date().format('yyyy/MM/dd HH:mm:ss')}] begin spider ... "
+        if (opt.x) instance.debug_mode = true;
+        
+        println "[${new Date().format('yyyy/MM/dd HH:mm:ss')}] begin spider (debug mode:${instance.debug_mode})... "
         long sum = 0;
         [
             ['http://all.wasu.cn/index/cid/22',                         '资讯'],
@@ -605,8 +615,10 @@ class VideoSpider{
         }
 
 
-        instance.publish(date);
-        instance.publish_xls(date);
+        if (!instance.debug_mode) {
+            instance.publish(date);
+            instance.publish_xls(date);
+        }
         
         println "[${new Date().format('yyyy/MM/dd HH:mm:ss')}] Finished: $sum video information saved!"
     }

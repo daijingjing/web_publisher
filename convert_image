@@ -35,6 +35,7 @@ for file in $basepath/$date/*.jpg ; do
     printf "."
     gm convert -quality 100 -unsharp "0.5x1.0+0.8+0.03" $file -resize 104x77 +profile "*" "$dest/$f.jpg"
     gm convert -quality 100 -unsharp "0.5x1.0+0.8+0.03" $file -resize 300x225 +profile "*" "$dest/${f}_play.jpg"
+	gm convert -quality 100 -unsharp "0.5x1.0+0.8+0.03" $file -resize 320x240! +profile "*" "$dest/${f}_big.jpg"
     gm composite -quality 100 $cover_img "$dest/${f}_play.jpg" "$dest/${f}_play.jpg"
   fi
 done

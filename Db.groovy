@@ -140,6 +140,15 @@ class Db {
         return videos
     }
     
+    def listVideosAll() {
+        def videos = []
+        sqlInstance.eachRow( "SELECT `uuid` FROM (SELECT * FROM `video_resource` ORDER BY published DESC) a ORDER BY channel,published DESC,vid DESC" ) { 
+            videos.add(it[0])
+        }
+        
+        return videos
+    }
+    
     def findVideosByDate(Date date) {
         def videos = []
         sqlInstance.eachRow( "SELECT `uuid` FROM `video_resource` WHERE `published` = ? ORDER BY channel,published DESC,vid DESC", [date] ) { 

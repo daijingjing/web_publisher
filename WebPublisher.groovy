@@ -35,7 +35,8 @@ class WebPublisher {
     int publishContent() {
         int count = 0;
         print "start publish content page "
-        def video_list = db.listVideos() as List
+        def video_list = forced ? db.listVideosAll() as List
+                                : db.listVideos() as List
         
         for (int i=0; i < video_list.size(); i++) {
             def uuid = video_list[i]
@@ -171,7 +172,7 @@ class WebPublisher {
         if (opt.m) publisher.templatePath = opt.m;
         if (opt.f) publisher.forced = true;
         
-        if (publisher.publishContent() > 0) {
+        if (publisher.publishContent() > 0 || !publisher.forced) {
             publisher.publishIndex()
             publisher.publishHomepage()
         } else {
