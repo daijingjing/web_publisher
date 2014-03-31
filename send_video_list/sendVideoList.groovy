@@ -69,6 +69,10 @@ def sendPackage(def date, def fileName, def to) {
 
 
 def buildPackage(def date, def fileName) {
+    def videoList = getVideoList(date)
+
+    if (videoList.size() == 0)
+        return -1
 
     def wb = new HSSFWorkbook();
     def createHelper = wb.getCreationHelper();
@@ -88,7 +92,7 @@ def buildPackage(def date, def fileName) {
 
     // first row - title
     def titleCell = sheet.createRow(rowIdx).createCell(0)
-    titleCell.setCellValue("视频内容报备(${new Date().format('yyyy/MM/dd')})")
+    titleCell.setCellValue("视频内容报备(${date.format('yyyy/MM/dd')})")
     titleCell.setCellStyle(style)
 
     def row1 = sheet.createRow(++rowIdx)
@@ -109,7 +113,7 @@ def buildPackage(def date, def fileName) {
     // 
     def today = date.format('yyyy年MM月dd日')
 
-    getVideoList(date).eachWithIndex { item,idx ->
+    videoList.eachWithIndex { item,idx ->
         // data row
         def cell
         def row = sheet.createRow(++rowIdx)
@@ -139,6 +143,8 @@ def buildPackage(def date, def fileName) {
     zipFile.close()
     
     new File(fileName + '.xls').delete()
+
+    return videoList.size()
 }
 
 
@@ -147,12 +153,16 @@ try {
 
     def date = new Date();
     def file = "${date.format('yyyyMMdd')}"
-    buildPackage(date, file);
-    sendPackage(date, file + '.zip', [
-            ["king3g@139.com", "王俊"],
-            ["jinxia@temobi.com", "靳霞"]
-        ])
-    new File(file + '.zip').delete()
+    if (buildPackage(date, file) > 0) {
+        sendPackage(date, file + '.zip', [
+                // ["king3g@139.com", "王俊"],
+                ["jjyyis@qq.com", "戴晶晶"],
+                ["jinxia@temobi.com", "靳霞"]
+            ])
+        new File(file + '.zip').delete()
+    } else {
+        println "no data"
+    }
     
 } catch (Exception ex) {
     ex.printStackTrace();
