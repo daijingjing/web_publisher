@@ -7,9 +7,10 @@ cd /home/daijj/publisher
 
 ./zore_fd | sort | uniq > zore_vids
 
-groovy --encoding=UTF-8 WebPublisher.groovy -f -m ./templates -p $basepath/v/
-groovy --encoding=UTF-8 WebPublisher.groovy -m ./templates_jituan -p $basepath/jituan/
-groovy --encoding=UTF-8 WebPublisher.groovy -f -m ./templates_new -p $basepath/new/
+#groovy --encoding=UTF-8 WebPublisher.groovy -f -m ./templates -p $basepath/v/
+#groovy --encoding=UTF-8 WebPublisher.groovy -m ./templates_jituan -p $basepath/jituan/
+#groovy --encoding=UTF-8 WebPublisher.groovy -f -m ./templates_new -p $basepath/new/
+groovy --encoding=UTF-8 WebPublisher.groovy -m ./templates_new -p $basepath/new/
 
 rm -f zore_vids
 

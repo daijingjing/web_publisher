@@ -38,8 +38,11 @@ class ImportExcel {
             if (new File("$basePath/${publishDate.format('yyyyMMdd')}/${data.vid}.jpg").exists() &&
                 new File("$basePath/${publishDate.format('yyyyMMdd')}/${data.vid}_11_jk.3gp").exists() &&
                 new File("$basePath/${publishDate.format('yyyyMMdd')}/${data.vid}_13_jm.3gp").exists()) {
-                if (db.addVideo(data))
-                    count++;
+                
+                // 判断文件大小,小于~20s则不入库
+                if (new File("$basePath/${publishDate.format('yyyyMMdd')}/${data.vid}_13_jm.3gp").length() > (20*300*1024/8))
+                    if (db.addVideo(data))
+                        count++;
             }
         }
         

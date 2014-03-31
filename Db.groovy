@@ -133,7 +133,7 @@ class Db {
     
     def listVideos() {
         def videos = []
-        sqlInstance.eachRow( "SELECT `uuid` FROM (SELECT * FROM `video_resource` ORDER BY published DESC LIMIT 1000) a ORDER BY channel,published DESC,vid DESC" ) { 
+        sqlInstance.eachRow( "SELECT `uuid` FROM (SELECT * FROM `video_resource` ORDER BY published DESC LIMIT 1500) a ORDER BY channel,published DESC,vid DESC" ) { 
             videos.add(it[0])
         }
         

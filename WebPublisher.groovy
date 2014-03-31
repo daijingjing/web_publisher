@@ -40,6 +40,8 @@ class WebPublisher {
         
         for (int i=0; i < video_list.size(); i++) {
             def uuid = video_list[i]
+            if (forced && i == video_list.size() - 1)
+                break; 
             
             if (forced || !new File(publish_base + urlVideo(uuid)).exists()) { // skip exist content page
                 print '.'

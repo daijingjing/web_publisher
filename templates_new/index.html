@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<title>山西手机视讯</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no" name="format-detection" />
+		<link href="./css/style.css" rel="stylesheet" type="text/css" />
+		<link href="./css/index.css" rel="stylesheet" type="text/css" />
+		<script src="./js/jquery.min.js" type="text/javascript"></script>
+		<script src="./js/jquery.lazyload.js" type="text/javascript"></script>
+		<script src="./js/default.js" type="text/javascript"></script>
+	</head>
+	<body>
+			<header>
+				<a href="#" class="logo">山西手机视讯</a>
+			</header>
+			<div class="nav">
+				<span class="now"><a href="./">首页</a></span>
+				<span><a href=".<%=service.urlChannel("资讯")%>">资讯</a></span>
+				<span><a href=".<%=service.urlChannel("综艺")%>">综艺</a></span>
+				<span><a href=".<%=service.urlChannel("体育")%>">体育</a></span>
+				<span><a href=".<%=service.urlChannel("娱乐")%>">娱乐</a></span>
+				<span><a href=".<%=service.urlChannel("影视")%>">影视</a></span>
+				<span><a href="./4g.html">4G尊享</a></span>
+				<span><a href="./download.html">下载</a></span>
+			</div>
+			<a class="guanggao_img" href="./4g.html">
+				<img src="./images/guanggao.jpg">
+			</a>
+			<div id="content">
+				<!-- -聚焦部分 -->
+				<div class="focus">
+					<div class="focusnews">
+						<% service.db.findVideosByChannel("资讯", [offset:0,max:1]).each{ video -> %>
+						<div class="hotpic">
+							<a href=".<%=service.urlVideo(video.uuid)%>"><img src="./video_thumb/<%=video.published.format("yyyyMMdd")%>/<%=video.vid%>_big.jpg"></a>
+						</div>
+						<%}%>
+						<div class="txtlist">
+							<% service.db.findVideosByChannel("资讯", [offset:0,max:1]).each{ video -> %>
+							<div style="margin-bottom:2px;">
+								<a href=".<%=service.urlVideo(video.uuid)%>"><%=video.title%></a>
+							</div>
+							<%}%>
+							<% service.db.findVideosByChannel("资讯", [offset:1,max:2]).each{ video -> %>
+							<div style="margin-bottom:2px;">
+								<a href=".<%=service.urlVideo(video.uuid)%>"><%=video.title%></a>
+							</div>
+							<%}%>
+						</div>
+					</div>
+				</div>
+				<div style="clear:both"></div>
+				<div class="body_wrap">
+					<div class="grid_list">
+						<dl class="item_list channel_122 column_15">
+							<% service.db.findVideosByChannel("资讯", [offset:4,max:3]).each{ video -> %><dd>
+								<!-- VID_DOT 15_0 -->
+								<a href=".<%=service.urlVideo(video.uuid)%>" class="cover">
+									<img src="./video_thumb/<%=video.published.format("yyyyMMdd")%>/<%=video.vid%>_big.jpg">
+								</a>
+								<p>
+									<a href=".<%=service.urlVideo(video.uuid)%>"><%=video.title%></a>
+									<span>发布:<%=video.published?.format("yyyy/MM/dd") %></span>
+								</p>
+							</dd><%}%>
+						</dl>
+						<h1 class="cate_title">
+							<a href=".<%=service.urlChannel("综艺")%>">更多</a>综艺
+						</h1>
+						<dl class="item_list channel_122 column_15">
+							<% service.db.findVideosByChannel("综艺", [max:6]).each{ video -> %><dd>
+								<!-- VID_DOT 15_0 -->
+								<a href=".<%=service.urlVideo(video.uuid)%>" class="cover">
+									<img src="./video_thumb/<%=video.published.format("yyyyMMdd")%>/<%=video.vid%>_big.jpg">
+								</a>
+								<p>
+									<a href=".<%=service.urlVideo(video.uuid)%>"><%=video.title%></a>
+									<span>发布:<%=video.published?.format("yyyy/MM/dd") %></span>
+								</p>
+							</dd><% } %>
+						</dl>
+						<h1 class="cate_title">
+							<a href=".<%=service.urlChannel("体育")%>">更多</a>体育
+						</h1>
+						<dl class="item_list channel_122 column_15">
+							 <% service.db.findVideosByChannel("体育", [max:6]).each{ video -> %><dd>
+							<!-- VID_DOT 15_0 -->
+								<a href=".<%=service.urlVideo(video.uuid)%>" class="cover">
+									<img src="./video_thumb/<%=video.published.format("yyyyMMdd")%>/<%=video.vid%>_big.jpg">
+								</a>
+								<p>
+									<a href=".<%=service.urlVideo(video.uuid)%>"><%=video.title%></a>
+									<span>发布:<%=video.published?.format("yyyy/MM/dd") %></span>
+								</p>
+							</dd><% } %>
+						</dl>
+						<h1 class="cate_title">
+							<a href=".<%=service.urlChannel("娱乐")%>">更多</a>娱乐
+						</h1>
+						<dl class="item_list channel_122 column_15">
+						<% service.db.findVideosByChannel("娱乐", [max:6]).each{ video -> %><dd>
+								<!-- VID_DOT 15_0 -->
+								<a href=".<%=service.urlVideo(video.uuid)%>" class="cover">
+									<img src="./video_thumb/<%=video.published.format("yyyyMMdd")%>/<%=video.vid%>_big.jpg">
+								</a>
+								<p>
+									<a href=".<%=service.urlVideo(video.uuid)%>"><%=video.title%></a>
+									<span>发布:<%=video.published?.format("yyyy/MM/dd") %></span>
+								</p>
+							</dd><% } %>
+						</dl>
+						<h1 class="cate_title">
+							<a href=".<%=service.urlChannel("影视")%>">更多</a>影视
+						</h1>
+						<dl class="item_list channel_122 column_15">
+						<% service.db.findVideosByChannel("影视", [max:6]).each{ video -> %><dd>
+								<!-- VID_DOT 15_0 -->
+								<a href=".<%=service.urlVideo(video.uuid)%>" class="cover">
+									<img src="./video_thumb/<%=video.published.format("yyyyMMdd")%>/<%=video.vid%>_big.jpg">
+								</a>
+								<p>
+									<a href=".<%=service.urlVideo(video.uuid)%>"><%=video.title%></a>
+									<span>发布:<%=video.published?.format("yyyy/MM/dd") %></span>
+								</p>
+							</dd><% } %>
+						</dl>
+					</div>
+				</div>
+			</div>
+			<footer>
+				<div id="footer">
+					<p>
+					中国移动通信集团山西有限公司
+					<br />
+					无线城市[晋ICP备11002219]
+					</p>
+				</div>
+			</footer>
+
+			<div class="cnzz_stat">
+			<script src="http://s13.cnzz.com/stat.php?id=4844881&web_id=4844881" language="JavaScript"></script>
+			<img src="/log/<%=URLDecoder.decode('首页')%>" />
+			<img src="/log/<%=URLDecoder.decode('首页')%>" />
+			<img src="/log/<%=URLDecoder.decode('首页')%>" />
+			</div>
+	</body>
+</html>
+
+
+
